@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="devexpress.wpf.accordion" Version="22.2.3" />
+    <PackageReference Include="devexpress.wpf.grid.core" Version="22.2.3" />
+  </ItemGroup>
+
+</Project>
