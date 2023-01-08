@@ -14,16 +14,18 @@ namespace DialogService
     public class MainViewModel : ViewModelBase
     {
 
-        IDialogService DialogService { get { return GetService<IDialogService>(); } }
+        IDialogService DialogService { get { return GetService<IDialogService>("DialogService1"); } }
 
 
         RegistrationViewModel registrationViewModel;
 
-        IMessageBoxService MessageBoxService { get { return GetService<IMessageBoxService>(); } }
+        //IMessageBoxService MessageBoxService { get { return GetService<IMessageBoxService>(); } }
 
 
         public MainViewModel()
         {
+
+
             registrationViewModel = new RegistrationViewModel();
         }
 
@@ -44,7 +46,7 @@ namespace DialogService
                        }
                        catch (Exception e)
                        {
-                           MessageBoxService.ShowMessage(e.Message, "Error", MessageButton.OK);
+                           //MessageBoxService.ShowMessage(e.Message, "Error", MessageButton.OK);
                            cancelArgs.Cancel = true;
                        }
                    },
@@ -74,15 +76,17 @@ namespace DialogService
 
 
 
-            var result = DialogService.ShowDialog(
-                dialogCommands: new List<UICommand>() { registerCommand, cancelCommand },
-                title: "Child View",
-                documentType: "RegistrationView",
-                viewModel: registrationViewModel
+            //var result = DialogService.ShowDialog(
+            //    dialogCommands: new List<UICommand>() { },
+            //    title: "Child View",
+            //    documentType: "RegistrationView",
+            //    viewModel: registrationViewModel
 
-            );
+            //);
 
-            var x = result;
+            //var x = result;
+
+            MessageResult dialogResult = DialogService.ShowDialog(MessageButton.OKCancel, "DialogView", registrationViewModel);
 
 
             //MessageBoxService.ShowMessage("denemem");

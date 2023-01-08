@@ -4,12 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:local="clr-namespace:DialogService"
+         xmlns:dxn="http://schemas.devexpress.com/winfx/2008/xaml/core/internal"
         xmlns:dxwui="http://schemas.devexpress.com/winfx/2008/xaml/windowsui" 
         xmlns:dxnav="http://schemas.devexpress.com/winfx/2008/xaml/navigation" 
         xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+        xmlns:views="clr-namespace:DialogService.Views"
         mc:Ignorable="d"
       xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
          xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+        
         Title="MainWindow" Height="450" Width="800">
 
     <Window.DataContext>
@@ -33,16 +36,39 @@
             </dx:DialogService.DialogStyle>
         </dx:DialogService>-->
 
-        <dx:DialogService/>
+        <!--<dx:DialogService/>
 
-        <dx:DXMessageBoxService/>
+        <dx:DXMessageBoxService/>-->
+
+
+        <dx:DialogService x:Name="DialogService1"  DialogWindowStartupLocation="CenterOwner">
+            <dx:DialogService.ViewTemplate>
+                <DataTemplate>
+                    <views:DialogView/>
+                </DataTemplate>
+            </dx:DialogService.ViewTemplate>
+            <dx:DialogService.DialogStyle>
+                <Style TargetType="dx:ThemedWindow">
+
+                    <!--<Setter Property="Template" Value="{StaticResource DxDialogWindowTemplateSettings}" />-->
+
+                    <Setter Property="dxn:ThemedWindowOptions.UseCustomDialogFooter" Value="True" />
+                    <!--<Setter Property="CommandButtonStyle" Value="{StaticResource DxDialogWindowCommandButtonStyleRed}" />
+                    <Setter Property="WindowStyle" Value="ToolWindow"/>
+                    <Setter Property="Width" Value="400"/>
+                    <Setter Property="Height" Value="200"/>-->
+
+                </Style>
+            </dx:DialogService.DialogStyle>
+        </dx:DialogService>
+
 
 
     </dxmvvm:Interaction.Behaviors>
 
     <Grid>
 
-        <Button Command="{Binding ShowRegistrationFormCommand}" Content="Kaydet" Margin="112,50,522,346"/>
+        <Button  Width="150" Height="50" Command="{Binding ShowRegistrationFormCommand}" Content="Kaydet" />
 
     </Grid>
 </Window>
