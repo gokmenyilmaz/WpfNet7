@@ -9,9 +9,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace WpfApp1
+namespace DialogService
 {
-    public  class MainViewModel: ViewModelBase
+    public class MainViewModel : ViewModelBase
     {
 
         IDialogService DialogService { get { return GetService<IDialogService>(); } }
@@ -20,7 +20,7 @@ namespace WpfApp1
         RegistrationViewModel registrationViewModel;
 
         IMessageBoxService MessageBoxService { get { return GetService<IMessageBoxService>(); } }
-  
+
 
         public MainViewModel()
         {
@@ -36,10 +36,11 @@ namespace WpfApp1
                id: null,
                caption: "Register",
                command: new DelegateCommand<CancelEventArgs>(
-                   cancelArgs => {
+                   cancelArgs =>
+                   {
                        try
                        {
-                          
+
                        }
                        catch (Exception e)
                        {
